@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>A Pen by  Cody</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/weather-icons/1.3.2/css/weather-icons.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons-wind.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  
+<div ng-app="weather" class="container-fluid">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div ng-controller="MainController as main" class="col-md-4">
+      <h1 class="text-center">Weather for {{ main.weather.name }}, {{main.weather.sys.country}}</h1>
+      <h1 class="text-center"><i id="mainWeather" ng-class="main.mainClass" class="wi"></i></h1>
+      <h3 class="text-center">{{main.weather.main.temp | UnitFilter:main.celsius}}<i ng-class="{'wi-celsius':main.celsius, 'wi-fahrenheit': !main.celsius}" class="wi"></i></h3>
+      <h3 class="text-center">{{main.weather.weather[0].description | TitleCase }}</h3>
+      <h3 class="text-center">Wind {{main.weather.wind.speed}} &nbsp;<i ng-class="main.wind" class="wi wi-wind"></i></h3>
+      <div class="text-center">
+        <div class="btn-group block-center">
+          <button id="celsius" ng-click="main.toggleUnits()" ng-disabled="main.celsius" class="btn btn-primary">C</button>
+          <button id="fah" ng-click="main.toggleUnits()" ng-disabled="!main.celsius" class="btn btn-primary">F</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

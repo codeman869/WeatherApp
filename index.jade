@@ -1,0 +1,18 @@
+.container-fluid(ng-app="weather")
+  .row
+    .col-md-4
+    .col-md-4(ng-controller="MainController as main")
+      h1.text-center Weather for {{ main.weather.name }}, {{main.weather.sys.country}}
+      h1.text-center
+        i.wi#mainWeather(ng-class="main.mainClass")
+      h3.text-center {{main.weather.main.temp | UnitFilter:main.celsius}}
+        i.wi(ng-class="{'wi-celsius':main.celsius, 'wi-fahrenheit': !main.celsius}")
+      h3.text-center {{main.weather.weather[0].description | TitleCase }}
+      h3.text-center Wind {{main.weather.wind.speed}} &nbsp;
+        i.wi.wi-wind(ng-class="main.wind")
+      .text-center
+        .btn-group.block-center
+          button.btn.btn-primary#celsius(ng-click="main.toggleUnits()" ng-disabled="main.celsius") C
+          button.btn.btn-primary#fah(ng-click="main.toggleUnits()" ng-disabled="!main.celsius") F
+      
+    .col-md-4
